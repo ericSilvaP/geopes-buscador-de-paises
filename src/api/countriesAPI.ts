@@ -1,3 +1,5 @@
+import type { Country } from '../types/country'
+
 class CountriesAPI {
   private baseURL: string
   private fields: string[]
@@ -39,12 +41,12 @@ class CountriesAPI {
     return `fields=${fields.join(',')}`
   }
 
-  async getAll<T>(fields?: string[]): Promise<T> {
+  async getAll(fields?: string[]): Promise<Country[]> {
     const url = this.baseURL + `/all?` + this.fieldsURL(fields)
     return this.fetchJSON(url, 'getAll countries error')
   }
 
-  async getByName<T>(name: string, fields?: string[]): Promise<T> {
+  async getByName(name: string, fields?: string[]): Promise<Country[]> {
     const url =
       this.baseURL +
       `/name/${encodeURIComponent(name)}?` +
@@ -52,7 +54,7 @@ class CountriesAPI {
     return this.fetchJSON(url, 'getByName country error. Country name: ' + name)
   }
 
-  async getByFullName<T>(name: string, fields?: string[]): Promise<T> {
+  async getByFullName(name: string, fields?: string[]): Promise<Country[]> {
     const url =
       this.baseURL +
       `/name/${encodeURIComponent(name)}?` +
@@ -64,7 +66,10 @@ class CountriesAPI {
     )
   }
 
-  async getAlphaCode<T>(code: string | number, fields?: string[]): Promise<T> {
+  async getAlphaCode(
+    code: string | number,
+    fields?: string[]
+  ): Promise<Country> {
     const url =
       this.baseURL +
       `/alpha/${encodeURIComponent(code)}?` +

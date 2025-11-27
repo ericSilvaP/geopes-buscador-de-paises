@@ -2,6 +2,7 @@ import geopes from '/src/assets/geopes-logo.png'
 import './style.css'
 import { FaSearch } from 'react-icons/fa'
 import { FaSlidersH } from 'react-icons/fa'
+import { FaHeart } from 'react-icons/fa'
 
 function Home() {
   return (
@@ -24,6 +25,21 @@ function Home() {
           </div>
           <FaSlidersH />
         </div>
+
+        <section>
+          <div>
+            <div>
+              <img
+                className="h-auto w-24"
+                src="/src/assets/brasil.jpg"
+                alt="#"
+              />
+              <h2>País</h2>
+            </div>
+
+            <FaHeart />
+          </div>
+        </section>
       </main>
     </>
   )

@@ -1,8 +1,21 @@
 class CountriesAPI {
   private baseURL: string
+  private fields: string[]
 
   constructor() {
     this.baseURL = 'https://restcountries.com/v3.1'
+    this.fields = [
+      'name',
+      'area',
+      'population',
+      'region',
+      'subregion',
+      'maps',
+      'languages',
+      'currencies',
+      'tld',
+      'borders',
+    ]
   }
 
   private async fetchJSON(url: string, errorMessage: string) {
@@ -21,9 +34,22 @@ class CountriesAPI {
     }
   }
 
-  async getAll<T>(fields: string[]): Promise<T> {
-    const url = this.baseURL + `/all?fields=${fields.join(',') ?? 'name'}`
+  private fieldsURL(fields?: string[]) {
+    fields = fields ?? this.fields
+    return `fields=${fields.join(',')}`
+  }
+
+  async getAll<T>(fields?: string[]): Promise<T> {
+    const url = this.baseURL + `/all?` + this.fieldsURL(fields)
     return this.fetchJSON(url, 'getAll countries error')
+  }
+
+  async getByName<T>(name: string, fields?: string[]): Promise<T> {
+    const url =
+      this.baseURL +
+      `/name/${encodeURIComponent(name)}?` +
+      this.fieldsURL(fields)
+    return this.fetchJSON(url, 'getByName country error. Country name: ' + name)
   }
 }
 

@@ -15,7 +15,6 @@ class CountriesAPI {
       'maps',
       'languages',
       'currencies',
-      'tld',
       'borders',
     ]
   }
@@ -37,7 +36,7 @@ class CountriesAPI {
   }
 
   private fieldsURL(fields?: string[]) {
-    fields = fields ?? this.fields
+    fields = fields ? [...this.fields, ...fields] : this.fields
     return `fields=${fields.join(',')}`
   }
 
@@ -166,14 +165,18 @@ class CountriesAPI {
     )
   }
 
-  async getByTranslation(translationName: string, fields?: string[]): Promise<Country[]> {
+  async getByTranslation(
+    translationName: string,
+    fields?: string[]
+  ): Promise<Country[]> {
     const url =
       this.baseURL +
       `/translation/${encodeURIComponent(translationName)}?` +
       this.fieldsURL(fields)
     return this.fetchJSON(
       url,
-      "Can't find countries by translation. Country translation: " + translationName
+      "Can't find countries by translation. Country translation: " +
+        translationName
     )
   }
 }

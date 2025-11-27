@@ -21,4 +21,11 @@ export type Country = {
   >
   tld?: string[]
   borders?: string[]
+  translations?: Record<
+    string,
+    {
+      official: string
+      common: string
+    }
+  >
 }

@@ -130,7 +130,10 @@ class CountriesAPI {
     )
   }
 
-  async getByCapitalCity(capital: string, fields?: string[]): Promise<Country[]> {
+  async getByCapitalCity(
+    capital: string,
+    fields?: string[]
+  ): Promise<Country[]> {
     const url =
       this.baseURL +
       `/capital/${encodeURIComponent(capital)}?` +
@@ -138,6 +141,17 @@ class CountriesAPI {
     return this.fetchJSON(
       url,
       "Can't find countries by capital. Country capital: " + capital
+    )
+  }
+
+  async getByCurrency(currency: string, fields?: string[]): Promise<Country[]> {
+    const url =
+      this.baseURL +
+      `/currency/${encodeURIComponent(currency)}?` +
+      this.fieldsURL(fields)
+    return this.fetchJSON(
+      url,
+      "Can't find countries by currency. Country currency: " + currency
     )
   }
 }

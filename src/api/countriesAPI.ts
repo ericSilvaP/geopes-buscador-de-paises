@@ -154,6 +154,17 @@ class CountriesAPI {
       "Can't find countries by currency. Country currency: " + currency
     )
   }
+
+  async getByDemonym(demonymn: string, fields?: string[]): Promise<Country[]> {
+    const url =
+      this.baseURL +
+      `/demonym/${encodeURIComponent(demonymn)}?` +
+      this.fieldsURL(fields)
+    return this.fetchJSON(
+      url,
+      "Can't find countries by demonym. Country demonym: " + demonymn
+    )
+  }
 }
 
 export default CountriesAPI

@@ -58,10 +58,20 @@ class CountriesAPI {
       `/name/${encodeURIComponent(name)}?` +
       this.fieldsURL(fields) +
       '&fullText=true'
-    console.log(url)
     return this.fetchJSON(
       url,
       'getByFullName country error. Country name: ' + name
+    )
+  }
+
+  async getAlphaCode<T>(code: string | number, fields?: string[]): Promise<T> {
+    const url =
+      this.baseURL +
+      `/alpha/${encodeURIComponent(code)}?` +
+      this.fieldsURL(fields)
+    return this.fetchJSON(
+      url,
+      "Can't find country by code. Country code: " + code
     )
   }
 }

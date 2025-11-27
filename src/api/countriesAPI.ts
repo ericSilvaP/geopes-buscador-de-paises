@@ -165,6 +165,17 @@ class CountriesAPI {
       "Can't find countries by demonym. Country demonym: " + demonymn
     )
   }
+
+  async getByTranslation(translationName: string, fields?: string[]): Promise<Country[]> {
+    const url =
+      this.baseURL +
+      `/translation/${encodeURIComponent(translationName)}?` +
+      this.fieldsURL(fields)
+    return this.fetchJSON(
+      url,
+      "Can't find countries by translation. Country translation: " + translationName
+    )
+  }
 }
 
 export default CountriesAPI

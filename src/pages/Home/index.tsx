@@ -1,5 +1,7 @@
 import geopes from '/src/assets/geopes-logo.png'
 import './style.css'
+import { FaSearch } from 'react-icons/fa'
+import { FaSlidersH } from 'react-icons/fa'
 
 function Home() {
   return (
@@ -13,6 +15,14 @@ function Home() {
           <a href="#">Sobre</a>
         </p>
       </header>
+
+      <div>
+        <div>
+          <FaSearch />
+          <p>Pesquisar</p>
+        </div>
+        <FaSlidersH />
+      </div>
     </>
   )
 }

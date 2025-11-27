@@ -51,6 +51,19 @@ class CountriesAPI {
       this.fieldsURL(fields)
     return this.fetchJSON(url, 'getByName country error. Country name: ' + name)
   }
+
+  async getByFullName<T>(name: string, fields?: string[]): Promise<T> {
+    const url =
+      this.baseURL +
+      `/name/${encodeURIComponent(name)}?` +
+      this.fieldsURL(fields) +
+      '&fullText=true'
+    console.log(url)
+    return this.fetchJSON(
+      url,
+      'getByFullName country error. Country name: ' + name
+    )
+  }
 }
 
 export default CountriesAPI

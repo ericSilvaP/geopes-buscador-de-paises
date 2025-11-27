@@ -104,6 +104,17 @@ class CountriesAPI {
       "Can't find countries by language. Country language: " + language
     )
   }
+
+  async getByRegion(region: string, fields?: string[]): Promise<Country[]> {
+    const url =
+      this.baseURL +
+      `/region/${encodeURIComponent(region)}?` +
+      this.fieldsURL(fields)
+    return this.fetchJSON(
+      url,
+      "Can't find countries by region. Country region: " + region
+    )
+  }
 }
 
 export default CountriesAPI

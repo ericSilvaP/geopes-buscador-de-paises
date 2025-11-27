@@ -129,6 +129,17 @@ class CountriesAPI {
       "Can't find countries by region. Country region: " + subRegion
     )
   }
+
+  async getByCapitalCity(capital: string, fields?: string[]): Promise<Country[]> {
+    const url =
+      this.baseURL +
+      `/capital/${encodeURIComponent(capital)}?` +
+      this.fieldsURL(fields)
+    return this.fetchJSON(
+      url,
+      "Can't find countries by capital. Country capital: " + capital
+    )
+  }
 }
 
 export default CountriesAPI

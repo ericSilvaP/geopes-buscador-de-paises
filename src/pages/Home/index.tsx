@@ -16,13 +16,15 @@ function Home() {
         </p>
       </header>
 
-      <div>
-        <div>
-          <FaSearch />
-          <p>Pesquisar</p>
+      <main className="flex flex-col items-center">
+        <div className="bg-[#868993] text-[#194167] flex items-center justify-between px-2 h-8 w-5/6 rounded-sm m-4">
+          <div className="flex items-center gap-2">
+            <FaSearch />
+            <p>Pesquisar</p>
+          </div>
+          <FaSlidersH />
         </div>
-        <FaSlidersH />
-      </div>
+      </main>
     </>
   )
 }

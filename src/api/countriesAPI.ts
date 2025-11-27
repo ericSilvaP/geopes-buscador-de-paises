@@ -6,17 +6,7 @@ class CountriesAPI {
 
   constructor() {
     this.baseURL = 'https://restcountries.com/v3.1'
-    this.fields = [
-      'name',
-      'area',
-      'population',
-      'region',
-      'subregion',
-      'maps',
-      'languages',
-      'currencies',
-      'borders',
-    ]
+    this.fields = ['name', 'area', 'maps', 'languages', 'currencies', 'borders']
   }
 
   private async fetchJSON(url: string, errorMessage: string) {

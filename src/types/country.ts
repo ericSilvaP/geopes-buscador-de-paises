@@ -4,23 +4,23 @@ export type Country = {
     official: string
   }
   area: number
-  population: number
-  region: string
-  subregion: string
   maps: {
     googleMaps: string
     openStreetMaps: string
   }
-  languages?: Record<string, string>
-  currencies?: Record<
+  tld: string[]
+  borders: string[]
+  currencies: Record<
     string,
     {
       name: string
       symbol: string
     }
   >
-  tld?: string[]
-  borders?: string[]
+  population?: number
+  region?: string
+  subregion?: string
+  languages?: Record<string, string>
   translations?: Record<
     string,
     {
@@ -28,4 +28,11 @@ export type Country = {
       common: string
     }
   >
+  flags?: {
+    png: string
+    svg: string
+    alt: string
+  }
+
+  flag?: string
 }

@@ -1,1 +1,7 @@
-@import 'tailwindcss';
+@media (min-width: 768px) {
+  .countries-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    padding: 0 4rem;
+  }
+}

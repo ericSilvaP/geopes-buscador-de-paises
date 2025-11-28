@@ -1,38 +1,38 @@
 export type Country = {
-  name: {
-    common: string
-    official: string
+  flags: {
+    png: string
+    svg: string
+    alt: string
   }
-  area: number
-  maps: {
-    googleMaps: string
-    openStreetMaps: string
-  }
-  tld: string[]
-  borders: string[]
-  currencies: Record<
-    string,
-    {
-      name: string
-      symbol: string
-    }
-  >
   capital: string[]
-  population?: number
-  region?: string
-  subregion?: string
-  languages?: Record<string, string>
-  translations?: Record<
+  population: number
+  region: string
+  translations: Record<
     string,
     {
       official: string
       common: string
     }
   >
-  flags?: {
-    png: string
-    svg: string
-    alt: string
+  name?: {
+    common: string
+    official: string
   }
+  area?: number
+  maps?: {
+    googleMaps: string
+    openStreetMaps: string
+  }
+  tld?: string[]
+  borders?: string[]
+  currencies?: Record<
+    string,
+    {
+      name: string
+      symbol: string
+    }
+  >
+  subregion?: string
+  languages?: Record<string, string>
   flag?: string
 }

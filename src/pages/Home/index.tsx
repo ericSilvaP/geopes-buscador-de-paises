@@ -1,4 +1,5 @@
 import Header from '../../components/Header'
+import SearchBar from '../../components/SearchBar'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
 import { FaRegHeart } from 'react-icons/fa'
@@ -7,6 +8,7 @@ function Home() {
   return (
     <>
       <Header />
+      <SearchBar />
 
       <main className="flex flex-col items-center">
         <section className="w-full flex flex-col items-center gap-4 p-4">

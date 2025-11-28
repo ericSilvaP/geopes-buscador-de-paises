@@ -1,7 +1,5 @@
 import Header from '../../components/Header'
 import './style.css'
-import { FaSearch } from 'react-icons/fa'
-import { FaSlidersH } from 'react-icons/fa'
 import { FaHeart } from 'react-icons/fa'
 import { FaRegHeart } from 'react-icons/fa'
 
@@ -11,14 +9,6 @@ function Home() {
       <Header />
 
       <main className="flex flex-col items-center">
-        <div className="bg-[#868993] text-[#194167] flex items-center justify-between px-2 h-8 w-5/6 rounded-sm m-4">
-          <div className="flex items-center gap-2">
-            <FaSearch />
-            <p>Pesquisar</p>
-          </div>
-          <FaSlidersH />
-        </div>
-
         <section className="w-full flex flex-col items-center gap-4 p-4">
           <div className="bg-white shadow-md w-5/6 h-2/3 p-6 rounded-sm  sm:p-8 md:w-4/6 md:p-10 lg:w-3/6">
             <div className="flex justify-between items-start">

@@ -19,7 +19,13 @@ function DetailsPage() {
 
   async function loadCountry(code: string) {
     try {
-      const country = await api.getByAlphaCode(code, ['name'])
+      const country = await api.getByAlphaCode(code, [
+        'name',
+        'subregion',
+        'languages',
+        'currencies',
+        'borders',
+      ])
       setCountry(country)
     } catch (err) {
       console.error(err)

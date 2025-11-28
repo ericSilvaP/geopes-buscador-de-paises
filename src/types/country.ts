@@ -14,6 +14,7 @@ export type Country = {
       common: string
     }
   >
+  cca3: string
   name?: {
     common: string
     official: string

@@ -1,22 +1,21 @@
 import Header from '../../components/Header'
 import SearchBar from '../../components/SearchBar'
-// import Card from '../../components/Card'
-import DetailsCard from '../../components/DetailsCard'
+import Footer from '../../components/Footer'
 import './style.css'
+import Card from '../../components/Card'
 
 function Home() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col items-center">
       <Header />
-      <main className="flex flex-col items-center">
+      <main className="w-full flex-1 flex flex-col items-center">
         <SearchBar />
-
         <section className="w-full flex flex-col items-center gap-4 p-4">
-          {/* <Card /> */}
-          <DetailsCard />
+          <Card />
         </section>
       </main>
-    </>
+      <Footer />
+    </div>
   )
 }
 

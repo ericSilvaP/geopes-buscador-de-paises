@@ -17,6 +17,7 @@ export type Country = {
       symbol: string
     }
   >
+  capital: string[]
   population?: number
   region?: string
   subregion?: string
@@ -33,6 +34,5 @@ export type Country = {
     svg: string
     alt: string
   }
-
   flag?: string
 }

@@ -2,14 +2,24 @@ import './style.css'
 import type { Country } from '../../types/country'
 import formatNumber from '../../utils/formatNumber'
 import FavButton from '../FavoriteButton'
+import { useNavigate } from 'react-router-dom'
 
 interface CardProps {
   country: Country
 }
 
 function Card({ country }: CardProps) {
+  const navigate = useNavigate()
+
+  function onCardClick(code: string) {
+    navigate(`/details?code=${code}`)
+  }
+
   return (
-    <div className="bg-[#f0f0f0] shadow-md min-w-5/6 min-h-2/3 p-6 rounded-sm sm:p-8 md:min-w-4/6 md:p-10 lg:min-w-3/6 country-card">
+    <div
+      className="bg-[#f0f0f0] shadow-md min-w-5/6 min-h-2/3 p-6 rounded-sm sm:p-8 md:min-w-4/6 md:p-10 lg:min-w-3/6 country-card"
+      onClick={() => onCardClick(country.cca3)}
+    >
       <div className="flex justify-between items-start">
         <div className="flex gap-2 max-w-fit md:flex-col pb-3">
           <img
@@ -32,7 +42,7 @@ function Card({ country }: CardProps) {
           </span>
         </p>
         <p className="font-bold">
-          Região:{' '}
+          Continente:{' '}
           <span className="font-normal">
             {country.region ?? 'Região não disponível'}
           </span>

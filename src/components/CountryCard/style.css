@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+.country-card {
+  cursor: pointer;
+}
+
+.country-card:hover {
+  transform: scale(1.02);
+  transition: 300ms;
+}

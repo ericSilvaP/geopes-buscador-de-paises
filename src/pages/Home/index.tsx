@@ -35,8 +35,8 @@ function Home() {
       <main className="w-full flex-1 flex flex-col items-center">
         <SearchBar />
         <section className="w-full flex flex-col items-center gap-4 py-4 countries-container">
-          {countries.map(() => (
-            <Card />
+          {countries.map((country) => (
+            <Card country={country} />
           ))}
         </section>
       </main>

@@ -1,32 +1,48 @@
 import { FaHeart } from 'react-icons/fa'
 import './style.css'
+import type { Country } from '../../types/country'
+import formatNumber from '../../utils/formatNumber'
+import FavButton from '../FavoriteButton'
 
-function Card() {
+interface CardProps {
+  country: Country
+}
+
+function Card({ country }: CardProps) {
   return (
-    <div className="bg-white shadow-md min-w-5/6 min-h-2/3 p-6 rounded-sm sm:p-8 md:min-w-4/6 md:p-10 lg:min-w-3/6 country-card">
+    <div className="bg-[#f0f0f0] shadow-md min-w-5/6 min-h-2/3 p-6 rounded-sm sm:p-8 md:min-w-4/6 md:p-10 lg:min-w-3/6 country-card">
       <div className="flex justify-between items-start">
         <div className="flex gap-2 max-w-fit md:flex-col pb-3">
           <img
             className="h-auto w-24 sm:w-28 md:w-32"
-            src="/src/assets/brasil.jpg"
-            alt="#"
+            src={country.flags.png}
+            alt={country.flags.alt}
           />
           <h2 className="text-2xl font-bold max-w-2/3 md:max-w-full">
-            República Democárica do Congo
+            {country.translations.por.common ?? 'Nome não disponível'}
           </h2>
-          <FaHeart className="text-2xl text-[#194167]" />
+          <FavButton country={country} />
         </div>
       </div>
 
       <div>
         <p className="font-bold">
-          Capital: <span className="font-normal">Brasilia</span>
+          Capital:{' '}
+          <span className="font-normal">
+            {country.capital[0] ?? 'Capital não disponível'}
+          </span>
         </p>
         <p className="font-bold">
-          Região: <span className="font-normal">Américas</span>
+          Região:{' '}
+          <span className="font-normal">
+            {country.region ?? 'Região não disponível'}
+          </span>
         </p>
         <p className="font-bold">
-          População: <span className="font-normal">214,3 M</span>
+          População:{' '}
+          <span className="font-normal">
+            {formatNumber(country.population ?? 0)}
+          </span>
         </p>
       </div>
     </div>

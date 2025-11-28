@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# 🗺️ GEOPES - Explorador de Países e Culturas 
+Este projeto nasceu como a 3ª Avaliação da disciplina de Programação Web, na UESPI. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O objetivo do projeto é criar uma experiência fluida e intuitiva, permitindo que qualquer pessoa explore informações ricas (culturais, geográficas e políticas) de países ao redor do globo. Tudo isso, é claro, seguindo as melhores práticas de desenvolvimento.
 
-Currently, two official plugins are available:
+## Principais Funcionalidades
+- Busca Interativa
+- Filtro por Continente
+- Detalhes Completos
+- Sistema de Favoritos
+- Interface Responsiva
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖥️ Tecnologias Utilizadas
+- React
+- Tailwind
+- CSS
+- HTML
+- Typescript
+- Vite
 
-## React Compiler
+## 📡 Nossa Base de Dados
+A base de todo o nosso conhecimento é fornecida pela REST Countries API.
+- URL: https://restcountries.com/ 
+- Autenticação: Nenhuma, acesso direto.
+- Dados Consumidos: Nome, capital, bandeira, população, área, continentes, linguas, moedas, localização, domínios, etc..
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Como executar o projeto
+1. Clone nosso repositório
+   ```bash
+   git clone https://github.com/ericSilvaP/geopes-buscador-de-paises
+   ```
+2. Entre no repositório
+   ```bash
+   cd geopes-buscador-de-paises
+   ```
+3. Instale as depêndencias
+   ```bash
+   yarn install
+   ```
+4. Inicie o servidor
+   ```bash
+   yarn dev
+   ```
+5. Para o build de produção
+   ```bash
+   yarn build
+   ```
+## 👨‍💻 Nosso Time de Desenvolvedores
+- [Eric Silva](https://github.com/ericSilvaP)
+- [Kaua Neres](https://github.com/Kaua-cel)

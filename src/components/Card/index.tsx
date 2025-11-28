@@ -1,4 +1,3 @@
-import { FaHeart } from 'react-icons/fa'
 import './style.css'
 import type { Country } from '../../types/country'
 import formatNumber from '../../utils/formatNumber'
@@ -21,7 +20,7 @@ function Card({ country }: CardProps) {
           <h2 className="text-2xl font-bold max-w-2/3 md:max-w-full">
             {country.translations.por.common ?? 'Nome não disponível'}
           </h2>
-          <FavButton country={country} />
+          <FavButton code={country.cca3} />
         </div>
       </div>
 

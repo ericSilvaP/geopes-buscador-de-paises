@@ -1,4 +1,5 @@
 // import { FaHeart } from 'react-icons/fa'
+import InfoCard from '../InfoCard'
 
 function DetailsCard() {
   return (
@@ -9,7 +10,7 @@ function DetailsCard() {
         src="/src/assets/brasil.jpg"
         alt="#"
       />
-      <p>Nome Completo do País</p>
+      <p>Nome completo do país</p>
 
       <div className="flex gap-8">
         <p className="font-bold">
@@ -22,6 +23,12 @@ function DetailsCard() {
           População <span className="font-normal">214,3 M</span>
         </p>
       </div>
+
+      <InfoCard
+        typeInformation="Português"
+        typeIcon="Idioma"
+        description="Português-Tupy"
+      />
     </div>
   )
 }

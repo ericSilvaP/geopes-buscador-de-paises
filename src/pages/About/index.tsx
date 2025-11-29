@@ -38,7 +38,7 @@ function DevsPage() {
         </header>
 
         <section className="w-full max-w-md space-y-8">
-          {devs.map((dev, index) => (
+          {devs.map((dev) => (
             <div
               key={dev.id}
               className="flex flex-col items-center overflow-hidden border-none shadow-lg bg-white hovershadow-2xl text-center p-6"

@@ -16,14 +16,16 @@ function Card({ country }: CardProps) {
   }
 
   return (
-    <div className="bg-[#f0f0f0] shadow-md min-w-5/6 min-h-2/3 p-6 rounded-sm sm:p-8 md:min-w-4/6 md:p-10 lg:min-w-3/6 country-card">
+    <div
+      className="bg-[#f0f0f0] shadow-md min-w-5/6 min-h-2/3 p-6 rounded-sm sm:p-8 md:min-w-4/6 md:p-10 lg:min-w-3/6 country-card"
+      onClick={() => onCardClick(country.cca3)}
+    >
       <div className="flex justify-between items-start">
         <div className="flex gap-2 max-w-fit md:flex-col pb-3">
           <img
             className="h-auto w-24 sm:w-28 md:w-32"
             src={country.flags.png}
             alt={country.flags.alt}
-            onClick={() => onCardClick(country.cca3)}
           />
           <h2 className="text-2xl font-bold max-w-2/3 md:max-w-full">
             {country.translations.por.common ?? 'Nome não disponível'}

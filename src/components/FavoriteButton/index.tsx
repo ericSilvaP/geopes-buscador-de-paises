@@ -10,7 +10,8 @@ function FavButton({ code }: FavButtonProps) {
   const favHandler = new FavoriteHandler()
   const [isFav, setIsFav] = useState(false)
 
-  function toggleFav(code: string) {
+  function toggleFav(e: React.MouseEvent, code: string) {
+    e.stopPropagation()
     favHandler.isFavorite(code) ? favHandler.remove(code) : favHandler.add(code)
   }
 
@@ -22,14 +23,14 @@ function FavButton({ code }: FavButtonProps) {
     return (
       <FaRegHeart
         className={`text-2xl text-[#194167] cursor-pointer`}
-        onClick={() => toggleFav(code)}
+        onClick={(e) => toggleFav(e, code)}
       />
     )
 
   return (
     <FaHeart
       className={`text-2xl text-[#194167] cursor-pointer`}
-      onClick={() => toggleFav(code)}
+      onClick={(e) => toggleFav(e, code)}
     />
   )
 }

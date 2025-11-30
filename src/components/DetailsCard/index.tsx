@@ -59,15 +59,38 @@ function DetailsCard({ country }: DetailsProps) {
         <p>{country?.name?.official ?? 'Nome oficial não disponível'}</p>
       </div>
 
-      <div className="info-container gap-2 sm:flex-row sm:gap-8">
+      <div className="info-container gap-2 sm:flex-row sm:gap-8 w-full">
         <p className="font-bold">
-          Capital: <span className="font-normal">{country?.capital}</span>
+          Capital:{' '}
+          <span className="font-normal">
+            {country?.capital ?? 'Capital não disponível'}
+          </span>
         </p>
         <p className="font-bold">
-          Continente: <span className="font-normal">{country?.region}</span>
+          Área:{' '}
+          <span className="font-normal">
+            {country?.area
+              ? country?.area?.toLocaleString('pt-BR') + ' km²'
+              : 'Área não disponível'}
+          </span>
         </p>
         <p className="font-bold">
-          Sub-Região: <span className="font-normal">{country?.subregion}</span>
+          Domínio:{' '}
+          <span className="font-normal">
+            {country?.tld?.join(', ') ?? 'Domínios não disponíveis'}
+          </span>
+        </p>
+        <p className="font-bold">
+          Continente:{' '}
+          <span className="font-normal">
+            {country?.region ?? 'Continente não disponível'}
+          </span>
+        </p>
+        <p className="font-bold">
+          Sub-Região:{' '}
+          <span className="font-normal">
+            {country?.subregion ?? 'Sub-região não disponível'}
+          </span>
         </p>
         <p className="font-bold">
           População:{' '}
@@ -78,7 +101,7 @@ function DetailsCard({ country }: DetailsProps) {
       </div>
 
       <InfoCard
-        nameInformation="Idioma"
+        nameInformation="Idioma(s)"
         typeIcon="language"
         description={
           country?.languages

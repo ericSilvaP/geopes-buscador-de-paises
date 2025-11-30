@@ -24,6 +24,8 @@ function DetailsPage() {
         'languages',
         'currencies',
         'borders',
+        'area',
+        'tld',
       ])
       setCountry(country)
     } catch (err) {

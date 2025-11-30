@@ -7,6 +7,7 @@ import CountriesAPI from '../../api/countriesAPI'
 import { useEffect, useState } from 'react'
 import type { Country } from '../../types/country'
 import FavoriteHandler from '../../favorite/favorite'
+import { useSearchParams } from 'react-router-dom'
 
 interface HomeProps {
   isFav?: boolean
@@ -17,10 +18,26 @@ function Home({ isFav }: HomeProps) {
   const [countries, setCountries] = useState<Country[]>([])
   const [loading, setLoading] = useState(true)
   const favHandler = new FavoriteHandler()
+  const [params] = useSearchParams()
+  const queryString = params.get('q')
+
+  async function searchCountries(q: string) {
+    try {
+      return await api.getByName(q)
+    } catch (e) {
+      try {
+        return await api.getByTranslation(q)
+      } catch (e) {
+        return []
+      }
+    }
+  }
 
   async function loadCountries() {
     try {
-      let data = await api.getAll()
+      let data = queryString
+        ? await searchCountries(queryString)
+        : await api.getAll()
       if (isFav) {
         data = data.filter((c) => favHandler.isFavorite(c.cca3))
       }
@@ -46,8 +63,12 @@ function Home({ isFav }: HomeProps) {
         <section className="w-full flex flex-col items-center gap-4 py-4 countries-container">
           {countries.length ? (
             countries.map((country) => <Card country={country} />)
-          ) : (
+          ) : isFav ? (
             <p className="text-3xl text-center font-bold">Não há favoritos</p>
+          ) : (
+            <p className="text-3xl text-center font-bold">
+              Nenhum país para "{queryString}"
+            </p>
           )}
         </section>
       </main>

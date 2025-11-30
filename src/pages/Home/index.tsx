@@ -74,7 +74,7 @@ function Home({ isFav }: HomeProps) {
 
   useEffect(() => {
     loadCountries()
-  }, [searchQueryString, filterOptions.regions])
+  }, [searchQueryString, filterOptions.regions, isFav])
 
   if (loading) return <p>Carregando...</p>
 

@@ -22,7 +22,7 @@ function SearchBar() {
   ]
 
   function onSubmit(data: FormValues) {
-    let url = '/?'
+    let url = '?'
     if (data.regions) {
       url += 'regions=' + data.regions.join(',')
     }

@@ -1,4 +1,4 @@
-import geopes from '/src/assets/geopes-logo.png'
+import geopes from '../../assets/geopes-logo.png'
 import { Link } from 'react-router-dom'
 
 function Header() {
@@ -10,8 +10,16 @@ function Header() {
           <p className="text-1xl">GeoPes</p>
         </div>
       </Link>
-      <p className="text-1xl">
-        <Link to="/about" className="hover:opacity-80 transition-opacity">Sobre </Link>
+      <p className="text-1xl flex gap-6">
+        <Link to="/" className="hover:opacity-80 transition-opacity">
+          Início
+        </Link>
+        <Link to="/favorites" className="hover:opacity-80 transition-opacity">
+          Favoritos
+        </Link>
+        <Link to="/about" className="hover:opacity-80 transition-opacity">
+          Sobre{' '}
+        </Link>
       </p>
     </header>
   )

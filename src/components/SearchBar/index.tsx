@@ -2,6 +2,7 @@ import { FaSearch } from 'react-icons/fa'
 import { FaSlidersH } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 type FormValues = {
   regions: string[]
@@ -9,6 +10,8 @@ type FormValues = {
 
 function SearchBar() {
   const navigate = useNavigate()
+  const { register, handleSubmit } = useForm<FormValues>()
+  const [showModal, setShowModal] = useState(false)
   const regions = [
     { value: 'americas', label: 'Américas' },
     { value: 'europe', label: 'Europa' },
@@ -17,7 +20,6 @@ function SearchBar() {
     { value: 'oceania', label: 'Oceania' },
     { value: 'antarctic', label: 'Antártida' },
   ]
-  const { register, handleSubmit } = useForm<FormValues>()
 
   function onSubmit(data: FormValues) {
     let url = '/?'
@@ -42,11 +44,21 @@ function SearchBar() {
           className="bg-[#00000018] text-white w-full focus-within:outline-0 px-1 py-2  focus-within:bg-[#ffffff18]"
         />
       </form>
-      <button className="cursor-pointer p-2">
+      <button
+        className="cursor-pointer p-2"
+        onClick={() => setShowModal(!showModal)}
+      >
         <FaSlidersH />
       </button>
-      <div className="h-screen w-screen bg-[#00000052] top-0 left-0 fixed flex justify-center items-center ">
-        <div className="bg-[#868993] text-[#ffffff] p-6 rounded-xl">
+      <div
+        className="h-screen w-screen bg-[#00000052] top-0 left-0 fixed flex justify-center items-center"
+        hidden={!showModal}
+        onClick={() => setShowModal(false)}
+      >
+        <div
+          className="bg-[#868993] text-[#ffffff] p-6 rounded-xl"
+          onClick={(e) => e.stopPropagation()}
+        >
           <h3 className="text-center text-3xl font-bold">Filtrar por</h3>
           <form onSubmit={handleSubmit(onSubmit)}>
             <h4 className="text-2xl">Continentes</h4>

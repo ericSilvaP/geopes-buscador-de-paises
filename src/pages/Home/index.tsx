@@ -7,7 +7,7 @@ import CountriesAPI from '../../api/countriesAPI'
 import { useEffect, useState } from 'react'
 import type { Country } from '../../types/country'
 import FavoriteHandler from '../../favorite/favorite'
-import { useSearchParams } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 
 interface HomeProps {
   isFav?: boolean
@@ -24,6 +24,7 @@ function Home({ isFav }: HomeProps) {
   const favHandler = new FavoriteHandler()
   const [params] = useSearchParams()
   const searchQueryString = params.get('q')
+  const location = useLocation()
   const filterOptions: FilterOptions = {
     regions: params.get('regions') ?? '',
   }
@@ -74,7 +75,7 @@ function Home({ isFav }: HomeProps) {
 
   useEffect(() => {
     loadCountries()
-  }, [searchQueryString, filterOptions.regions, isFav])
+  }, [location])
 
   if (loading) return <p>Carregando...</p>
 

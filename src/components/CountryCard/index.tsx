@@ -17,16 +17,20 @@ function Card({ country }: CardProps) {
 
   return (
     <div
-      className="bg-[#f0f0f0] shadow-md min-w-5/6 min-h-2/3 p-6 rounded-sm sm:p-8 md:min-w-4/6 md:p-10 lg:min-w-3/6 country-card"
+      className="bg-[#f0f0f0] shadow-md w-[20rem] p-4 rounded-sm country-card
+                flex flex-col gap-4 h-full min-h-72"
       onClick={() => onCardClick(country.cca3)}
     >
-      <div className="flex justify-between items-start">
-        <div className="flex gap-2 max-w-fit md:flex-col pb-3">
+      <div className="flex flex-col gap-3 w-full">
+        <div className="w-full h-32 sm:h-40 md:h-48 bg-[#f0f0f0] overflow-hidden rounded-xs">
           <img
-            className="h-auto w-24 sm:w-28 md:w-32"
+            className="max-w-full max-h-full object-contain"
             src={country.flags.png}
             alt={country.flags.alt}
+            onClick={() => onCardClick(country.cca3)}
           />
+        </div>
+        <div className="flex justify-between">
           <h2 className="text-2xl font-bold max-w-2/3 md:max-w-full">
             {country.translations.por.common ?? 'Nome não disponível'}
           </h2>

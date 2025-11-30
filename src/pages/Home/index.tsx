@@ -80,9 +80,9 @@ function Home({ isFav }: HomeProps) {
   if (loading) return <p>Carregando...</p>
 
   return (
-    <div className="flex flex-col item  s-center">
+    <div className="flex flex-col items-center min-h-screen">
       <Header />
-      <main className="w-full flex-1 flex flex-col items-center">
+      <main className="w-full flex-1 flex flex-col items-center gap-3">
         <SearchBar />
         <h2 className="text-3xl font-bold">Países{isFav && ' - Favoritos'}</h2>
         <section className="w-full flex flex-col items-center gap-4 py-4 countries-container">

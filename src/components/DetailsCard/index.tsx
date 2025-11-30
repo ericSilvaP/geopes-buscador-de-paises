@@ -4,6 +4,9 @@ import type { Country } from '../../types/country'
 import FavButton from '../FavoriteButton'
 import formatNumber from '../../utils/formatNumber'
 import { useNavigate } from 'react-router-dom'
+import CountriesAPI from '../../api/countriesAPI'
+import { useEffect, useState } from 'react'
+import './style.css'
 
 interface DetailsProps {
   country?: Country
@@ -11,6 +14,28 @@ interface DetailsProps {
 
 function DetailsCard({ country }: DetailsProps) {
   const navigate = useNavigate()
+  const api = new CountriesAPI()
+  const [countryBorders, setCountryBorders] = useState<string[]>([])
+
+  async function getCountriesAlpha(countriesCodes?: string[]) {
+    if (!countriesCodes) return []
+    return (await api.getByAlphaCodes(countriesCodes)).map(
+      (c) => c.translations.por.common ?? ''
+    )
+  }
+
+  useEffect(() => {
+    async function loadBorders() {
+      if (country?.borders) {
+        const borders = await getCountriesAlpha(country.borders)
+        setCountryBorders(borders)
+      } else {
+        setCountryBorders([])
+      }
+    }
+
+    loadBorders()
+  }, [])
 
   return (
     <div className="flex flex-col items-center gap-4 bg-white shadow-md w-full max-w-xl p-6 rounded-sm sm:p-8">
@@ -34,7 +59,7 @@ function DetailsCard({ country }: DetailsProps) {
         <p>{country?.name?.official ?? 'Nome oficial não disponível'}</p>
       </div>
 
-      <div className="flex flex-col gap-2 sm:flex-row sm:gap-8">
+      <div className="info-container gap-2 sm:flex-row sm:gap-8">
         <p className="font-bold">
           Capital: <span className="font-normal">{country?.capital}</span>
         </p>
@@ -78,7 +103,7 @@ function DetailsCard({ country }: DetailsProps) {
         nameInformation="Fronteira(s)"
         typeIcon="border"
         description={`Países: ${
-          country?.borders?.join(', ') ?? 'País sem fronteiras'
+          countryBorders.join(', ') ?? 'País sem fronteiras'
         }
         `}
       />

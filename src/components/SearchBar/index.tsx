@@ -82,7 +82,7 @@ function SearchBar() {
               className="bg-[#f0f0f0] text-[#868993] px-4 py-1 cursor-pointer rounded-xs transition-all duration-300 hover:bg-[#dddddd] w-fit mx-auto"
               onClick={() => setShowModal(false)}
             >
-              Mandar
+              Filtrar
             </button>
           </form>
         </div>

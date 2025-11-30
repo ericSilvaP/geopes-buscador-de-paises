@@ -57,7 +57,7 @@ function Home({ isFav }: HomeProps) {
         ? await searchCountries(searchQueryString)
         : await api.getAll()
 
-      if (filteredCountries) {
+      if (filteredCountries.length) {
         data = filteredCountries
       }
 

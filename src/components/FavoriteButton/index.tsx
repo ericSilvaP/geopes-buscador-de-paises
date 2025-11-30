@@ -12,12 +12,19 @@ function FavButton({ code }: FavButtonProps) {
 
   function toggleFav(e: React.MouseEvent, code: string) {
     e.stopPropagation()
-    favHandler.isFavorite(code) ? favHandler.remove(code) : favHandler.add(code)
+
+    if (favHandler.isFavorite(code)) {
+      favHandler.remove(code)
+      setIsFav(false)
+    } else {
+      favHandler.add(code)
+      setIsFav(true)
+    }
   }
 
   useEffect(() => {
     setIsFav(favHandler.isFavorite(code))
-  })
+  }, [code])
 
   if (!isFav)
     return (

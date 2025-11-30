@@ -7,9 +7,14 @@ import CountriesAPI from '../../api/countriesAPI'
 import { useEffect, useState } from 'react'
 import type { Country } from '../../types/country'
 import FavoriteHandler from '../../favorite/favorite'
+import { useLocation, useSearchParams } from 'react-router-dom'
 
 interface HomeProps {
   isFav?: boolean
+}
+
+type FilterOptions = {
+  regions?: string
 }
 
 function Home({ isFav }: HomeProps) {
@@ -17,10 +22,46 @@ function Home({ isFav }: HomeProps) {
   const [countries, setCountries] = useState<Country[]>([])
   const [loading, setLoading] = useState(true)
   const favHandler = new FavoriteHandler()
+  const [params] = useSearchParams()
+  const searchQueryString = params.get('q')
+  const location = useLocation()
+  const filterOptions: FilterOptions = {
+    regions: params.get('regions') ?? '',
+  }
+
+  async function filterCountries(q: FilterOptions) {
+    if (!q.regions) return []
+
+    const regions = q.regions.split(',')
+    const promises = regions.map((r) => api.getByRegion(r))
+    const results = await Promise.all(promises)
+
+    return results.flat()
+  }
+
+  async function searchCountries(q: string) {
+    try {
+      return await api.getByName(q)
+    } catch (e) {
+      try {
+        return await api.getByTranslation(q)
+      } catch (e) {
+        return []
+      }
+    }
+  }
 
   async function loadCountries() {
     try {
-      let data = await api.getAll()
+      const filteredCountries = await filterCountries(filterOptions)
+      let data = searchQueryString
+        ? await searchCountries(searchQueryString)
+        : await api.getAll()
+
+      if (filteredCountries.length) {
+        data = filteredCountries
+      }
+
       if (isFav) {
         data = data.filter((c) => favHandler.isFavorite(c.cca3))
       }
@@ -34,7 +75,7 @@ function Home({ isFav }: HomeProps) {
 
   useEffect(() => {
     loadCountries()
-  })
+  }, [location])
 
   if (loading) return <p>Carregando...</p>
 
@@ -43,11 +84,18 @@ function Home({ isFav }: HomeProps) {
       <Header />
       <main className="w-full flex-1 flex flex-col items-center">
         <SearchBar />
+        <h2 className="text-3xl font-bold">Países{isFav && ' - Favoritos'}</h2>
         <section className="w-full flex flex-col items-center gap-4 py-4 countries-container">
           {countries.length ? (
-            countries.map((country) => <Card country={country} />)
-          ) : (
+            countries
+              .sort((c1, c2) => c2.population - c1.population)
+              .map((country) => <Card country={country} />)
+          ) : isFav ? (
             <p className="text-3xl text-center font-bold">Não há favoritos</p>
+          ) : (
+            <p className="text-3xl text-center font-bold">
+              Nenhum país para "{searchQueryString}"
+            </p>
           )}
         </section>
       </main>

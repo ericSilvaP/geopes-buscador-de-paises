@@ -83,7 +83,6 @@ class CountriesAPI {
     const codesStr = codes.join(',')
     const url =
       this.baseURL + `/alpha?codes=${codesStr}&` + this.fieldsURL(fields)
-    console.log(url)
     return this.fetchJSON(
       url,
       "Can't find countries by codes. Country code: " + codesStr

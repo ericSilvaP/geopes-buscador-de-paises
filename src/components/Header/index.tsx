@@ -11,9 +11,6 @@ function Header() {
         </div>
       </Link>
       <p className="text-1xl flex gap-6">
-        <Link to="/" className="hover:opacity-80 transition-opacity">
-          Início
-        </Link>
         <Link to="/favorites" className="hover:opacity-80 transition-opacity">
           Favoritos
         </Link>

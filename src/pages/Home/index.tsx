@@ -84,6 +84,7 @@ function Home({ isFav }: HomeProps) {
       <Header />
       <main className="w-full flex-1 flex flex-col items-center">
         <SearchBar />
+        <h2 className="text-3xl font-bold">Países{isFav && ' - Favoritos'}</h2>
         <section className="w-full flex flex-col items-center gap-4 py-4 countries-container">
           {countries.length ? (
             countries.map((country) => <Card country={country} />)

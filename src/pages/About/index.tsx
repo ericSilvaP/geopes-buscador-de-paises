@@ -6,19 +6,19 @@ const devs = [
   {
     id: 1,
     name: 'Eric Silva',
-    role: 'Estudante de computação',
+    role: 'BackEnd',
     image: '/eric.png',
   },
   {
     id: 2,
     name: 'Kaua Neres',
-    role: 'Estudante de computação',
+    role: 'FrontEnd',
     image: '/kaua.png',
   },
   {
     id: 3,
     name: 'Wilk Neves',
-    role: 'Estudante de Computação',
+    role: 'FrontEnd',
     image: '/wilk.jpeg',
   },
 ]

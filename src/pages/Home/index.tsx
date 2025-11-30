@@ -87,7 +87,9 @@ function Home({ isFav }: HomeProps) {
         <h2 className="text-3xl font-bold">Países{isFav && ' - Favoritos'}</h2>
         <section className="w-full flex flex-col items-center gap-4 py-4 countries-container">
           {countries.length ? (
-            countries.map((country) => <Card country={country} />)
+            countries
+              .sort((c1, c2) => c2.population - c1.population)
+              .map((country) => <Card country={country} />)
           ) : isFav ? (
             <p className="text-3xl text-center font-bold">Não há favoritos</p>
           ) : (

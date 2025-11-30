@@ -13,13 +13,30 @@ interface HomeProps {
   isFav?: boolean
 }
 
+type FilterOptions = {
+  regions?: string
+}
+
 function Home({ isFav }: HomeProps) {
   const api = new CountriesAPI()
   const [countries, setCountries] = useState<Country[]>([])
   const [loading, setLoading] = useState(true)
   const favHandler = new FavoriteHandler()
   const [params] = useSearchParams()
-  const queryString = params.get('q')
+  const searchQueryString = params.get('q')
+  const filterOptions: FilterOptions = {
+    regions: params.get('regions') ?? '',
+  }
+
+  async function filterCountries(q: FilterOptions) {
+    if (!q.regions) return []
+
+    const regions = q.regions.split(',')
+    const promises = regions.map((r) => api.getByRegion(r))
+    const results = await Promise.all(promises)
+
+    return results.flat()
+  }
 
   async function searchCountries(q: string) {
     try {
@@ -35,9 +52,15 @@ function Home({ isFav }: HomeProps) {
 
   async function loadCountries() {
     try {
-      let data = queryString
-        ? await searchCountries(queryString)
+      const filteredCountries = await filterCountries(filterOptions)
+      let data = searchQueryString
+        ? await searchCountries(searchQueryString)
         : await api.getAll()
+
+      if (filteredCountries) {
+        data = filteredCountries
+      }
+
       if (isFav) {
         data = data.filter((c) => favHandler.isFavorite(c.cca3))
       }
@@ -51,7 +74,7 @@ function Home({ isFav }: HomeProps) {
 
   useEffect(() => {
     loadCountries()
-  })
+  }, [searchQueryString, filterOptions.regions])
 
   if (loading) return <p>Carregando...</p>
 
@@ -67,7 +90,7 @@ function Home({ isFav }: HomeProps) {
             <p className="text-3xl text-center font-bold">Não há favoritos</p>
           ) : (
             <p className="text-3xl text-center font-bold">
-              Nenhum país para "{queryString}"
+              Nenhum país para "{searchQueryString}"
             </p>
           )}
         </section>

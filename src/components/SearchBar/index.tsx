@@ -10,12 +10,12 @@ type FormValues = {
 function SearchBar() {
   const navigate = useNavigate()
   const regions = [
-    { value: 'amr', label: 'Américas' },
-    { value: 'eru', label: 'Europa' },
-    { value: 'asi', label: 'Ásia' },
-    { value: 'afr', label: 'África' },
-    { value: 'oce', label: 'Oceania' },
-    { value: 'ant', label: 'Antártida' },
+    { value: 'americas', label: 'Américas' },
+    { value: 'europe', label: 'Europa' },
+    { value: 'asia', label: 'Ásia' },
+    { value: 'africa', label: 'África' },
+    { value: 'oceania', label: 'Oceania' },
+    { value: 'antarctic', label: 'Antártida' },
   ]
   const { register, handleSubmit } = useForm<FormValues>()
 

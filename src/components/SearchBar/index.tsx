@@ -56,11 +56,14 @@ function SearchBar() {
         onClick={() => setShowModal(false)}
       >
         <div
-          className="bg-[#868993] text-[#ffffff] p-6 rounded-xl"
+          className="bg-[#868993] text-[#ffffff] py-6 px-10 rounded-xl"
           onClick={(e) => e.stopPropagation()}
         >
-          <h3 className="text-center text-3xl font-bold">Filtrar por</h3>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <h3 className="text-center text-3xl font-bold mb-6">Filtrar por</h3>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-4"
+          >
             <h4 className="text-2xl">Continentes</h4>
             <div>
               {regions.map((r) => (
@@ -74,7 +77,13 @@ function SearchBar() {
                 </label>
               ))}
             </div>
-            <button type="submit">Mandar</button>
+            <button
+              type="submit"
+              className="bg-[#f0f0f0] text-[#868993] px-4 py-1 cursor-pointer rounded-xs transition-all duration-300 hover:bg-[#dddddd] w-fit mx-auto"
+              onClick={() => setShowModal(false)}
+            >
+              Mandar
+            </button>
           </form>
         </div>
       </div>

@@ -7,7 +7,7 @@ import DetailsPage from './pages/Detail'
 import DevsPage from './pages/About'
 
 const router = createBrowserRouter([
-  { path: '/', element: <Home /> },
+  { path: '/', element: <Home isFav={false} /> },
   { path: '/about', element: <DevsPage /> },
   { path: '/details', element: <DetailsPage /> },
   { path: '/favorites', element: <Home isFav={true} /> },

@@ -17,7 +17,7 @@ function Card({ country }: CardProps) {
 
   return (
     <div
-      className="bg-[#f0f0f0] shadow-md w-[20rem] p-4 rounded-sm country-card
+      className="bg-[#f0f0f0] shadow-md max-w-[20rem] p-4 rounded-sm country-card
                 flex flex-col gap-4 h-full min-h-72"
       onClick={() => onCardClick(country.cca3)}
     >

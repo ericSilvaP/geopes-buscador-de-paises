@@ -27,7 +27,6 @@ function Card({ country }: CardProps) {
             className="max-w-full max-h-full object-contain"
             src={country.flags.png}
             alt={country.flags.alt}
-            onClick={() => onCardClick(country.cca3)}
           />
         </div>
         <div className="flex justify-between">

@@ -3,7 +3,7 @@ import InfoCard from '../InfoCard'
 import type { Country } from '../../types/country'
 import FavButton from '../FavoriteButton'
 import formatNumber from '../../utils/formatNumber'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CountriesAPI from '../../api/countriesAPI'
 import { useEffect, useState } from 'react'
 import './style.css'
@@ -75,7 +75,7 @@ function DetailsCard({ country }: DetailsProps) {
           </span>
         </p>
         <p className="font-bold">
-          Domínio:{' '}
+          Domínio(s):{' '}
           <span className="font-normal">
             {country?.tld?.join(', ') ?? 'Domínios não disponíveis'}
           </span>
@@ -125,11 +125,22 @@ function DetailsCard({ country }: DetailsProps) {
       <InfoCard
         nameInformation="Fronteira(s)"
         typeIcon="border"
-        description={`Países: ${
-          countryBorders.join(', ') ?? 'País sem fronteiras'
+        description={`${
+          countryBorders.length
+            ? countryBorders.join(', ')
+            : 'País sem fronteiras'
         }
         `}
       />
+
+      <Link
+        to={country?.maps?.googleMaps ?? 'https://www.google.com/maps'}
+        target="_blank"
+      >
+        <div className="text-blue-400 hover:text-blue-700">
+          Vá para Google Maps
+        </div>
+      </Link>
     </div>
   )
 }

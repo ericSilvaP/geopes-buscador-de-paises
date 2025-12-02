@@ -26,6 +26,7 @@ function DetailsPage() {
         'borders',
         'area',
         'tld',
+        'maps',
       ])
       setCountry(country)
     } catch (err) {

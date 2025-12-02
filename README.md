@@ -1,7 +1,7 @@
 # 🗺️ GEOPES - Explorador de Países e Culturas 
 Este projeto nasceu como a 3ª Avaliação da disciplina de Programação Web, na UESPI. 
 
-O objetivo do projeto é criar uma experiência fluida e intuitiva, permitindo que qualquer pessoa explore informações ricas (culturais, geográficas e políticas) de países ao redor do globo. Tudo isso, é claro, seguindo as melhores práticas de desenvolvimento.
+O objetivo do projeto é criar uma experiência fluida e intuitiva, permitindo que qualquer pessoa explore algumas informações de países ao redor do globo. Tudo isso, é claro, seguindo as melhores práticas de desenvolvimento.
 
 ## Principais Funcionalidades
 - Busca Interativa
@@ -37,14 +37,19 @@ A base de todo o nosso conhecimento é fornecida pela REST Countries API.
    ```bash
    yarn install
    ```
+   ou
+   ```bash
+   npm install
+   ```
 4. Inicie o servidor
    ```bash
    yarn dev
    ```
-5. Para o build de produção
+   ou
    ```bash
-   yarn build
+   npm run dev
    ```
 ## 👨‍💻 Nosso Time de Desenvolvedores
 - [Eric Silva](https://github.com/ericSilvaP)
 - [Kaua Neres](https://github.com/Kaua-cel)
+- [José Wilk](https://github.com/wilkneves)

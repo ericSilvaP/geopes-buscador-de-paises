@@ -67,7 +67,7 @@ function Home({ isFav }: HomeProps) {
       }
       setCountries(data)
     } catch (err) {
-      console.error(err)
+      console.error('Erro da API: ' + err)
     } finally {
       setLoading(false)
     }
